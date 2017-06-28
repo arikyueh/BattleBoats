@@ -1,0 +1,16 @@
+This code sends encrypted messages that have encoded coordinates and hit status to an AI which will update its board status accordingly.
+The AI will then also send its own randomly generated message for the the user's board status to update. The encryption is used with a
+xor checksum. 
+
+The first set of messages are required to determine who goes first.
+Negotiation Data Set
+$CHA,37348,117*46 <-this will send a challenge message to the opponent
+$DET,9578,46222*66 <-based of both the opponent's challenge message and yours this determine message will choose who goes first.
+
+HIT message 
+$HIT,3,8,1*43 <-this is a hit message the first number tells the row, the next number tells the column, and final number tells the boat size
+
+Coordinate message
+$COO,0,2*41 <-this is a coordinate message the same as a hit message but without the boat size.
+
+Leds are there to indicate the amount of lives the opponent has.
